@@ -1,0 +1,23 @@
+--- lors-0.82.1/src/lors_set_store.c	2004-01-27 13:14:42.000000000 -0500
++++ lors-0.82.1/src/lors_set_store.c	2008-09-04 23:33:40.000000000 -0400
+@@ -784,6 +784,11 @@
+                               &dst_blocksize,
+                               lc.arguments);
+             /* TODO: check value of 'ret' */
++            if(ret < 0)
++	    {
++               break;
++	    }
++
+             /* TODO: call free() on intermediate dst_data's: DONE */
+             src_data = dst_data;
+             src_length = dst_length;
+@@ -814,6 +819,6 @@
+ 
+     job->extra_data = f;
+ 
+-    _lorsCommitJob(job,JOB_COMMIT,LORS_SUCCESS);
+-    return 0;
++    _lorsCommitJob(job,JOB_COMMIT,ret);
++    return ret;
+ }
