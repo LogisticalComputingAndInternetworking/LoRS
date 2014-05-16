@@ -49,7 +49,7 @@ case $E2E in
         E2E_ORDER="checksum xor_encrypt"
         ;;
     2)
-        E2E_ORDER="checksum des_encrypt"
+        E2E_ORDER="checksum des_encrypt"j
         ;;
     3)
         E2E_ORDER="checksum zlib_compress xor_encrypt"
@@ -79,10 +79,21 @@ echo "Running lbone_proximity"
 UNAME=`uname`
 PWD=`pwd`
 RESOLUTION_FILE=${HOME}/.resolution.txt
+LBONE_RESOLUTION_SCRIPT=""
 
 if test -x $INSTALLDIR/bin/lbone_resolution ; then
+    LBONE_RESOLUTION_SCRIPT="$INSTALLDIR/bin/lbone_resolution"
+else
+    $(which lbone_resolution)
+    
+    if [ $? -eq 0 ]; then
+        LBONE_RESOLUTION_SCRIPT=lbone_resolution
+    fi
+fi
+
+if test -n ${LBONE_RESOLUTION_SCRIPT}; then
     echo "Writing ~/.resolution.txt cache file (be patient)..."
-    $INSTALLDIR/bin/lbone_resolution -getcache -m -1 -l "$LOCATION"  > $RESOLUTION_FILE 2> /dev/null
+    ${LBONE_RESOLUTION_SCRIPT} -getcache -m -1 -l "$LOCATION"  > $RESOLUTION_FILE 2> /dev/null
 else
    echo "Cannot find executable installation of 'lbone_resolution'."
    echo "Please run 'make install' prior to running lors_setup.sh."
