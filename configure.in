@@ -6,7 +6,7 @@ AC_CANONICAL_SYSTEM
 
 dnl automake and header files
 AM_CONFIG_HEADER([config.h])
-AM_INIT_AUTOMAKE( [lors], [0.826] )
+AM_INIT_AUTOMAKE( [lors], [0.828] )
 AC_PREFIX_DEFAULT("`pwd`/local")
 
 AC_PROG_LIBTOOL
@@ -129,7 +129,7 @@ fi
 dnl check and setup path of popt package
 AC_ARG_WITH(popt,[--with-popt=path   path to popt package(default is /usr)],
             LORS_POPT_DIR="$with_popt"
-            LORS_POPT_DIR="-L${with_popt}/lib",
+            LORS_POPT_LIB="-L${with_popt}/lib",
             LORS_POPT_DIR="/usr"
             LORS_POPT_LIB="")
 
