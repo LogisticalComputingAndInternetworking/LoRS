@@ -29,7 +29,7 @@ E2EINC = @E2EDIR@
 E2ELIB = @E2EDIR@/libend2end.la $(E2EDIR)/md5/libmd5.a $(E2EDIR)/des/libdes.a
 
 AM_CFLAGS = -g -D@OSDEF@  @EXTRA_CFLAGS@
-AM_CPPFLAGS = -I@GCC_INC_DIR@ -I../include -I../lbone/client/include/  -I$(XNDXMLINC) -I$(XNDINC) -I$(LBNINC) -I$(IBPINC) -I$(E2EINC) -I$(POPT_INC) -I$(ZLIB_INC) 
+AM_CPPFLAGS = -I../include -I../lbone/client/include/  -I$(XNDXMLINC) -I$(XNDINC) -I$(LBNINC) -I$(IBPINC) -I$(E2EINC) -I$(POPT_INC) -I$(ZLIB_INC) 
 
 ldadd = $(XNDLIB) $(LBNLIB) $(FDRLIB) $(IBPLIB) -L@XNDXMLDIR@/lib @LIBS@ $(ZLIB_LIB) $(POPT_LIB)  
 #$(E2ELIB)
