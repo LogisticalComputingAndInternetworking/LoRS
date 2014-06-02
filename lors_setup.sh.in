@@ -120,6 +120,7 @@ cat << EOF_XND > $HOME/.xndrc
 #  You may specify as many lbone servers as are available.  If one should
 #  fail, the tools will fail over to the next.
 
+LBONE_SERVER     dlt.incntre.iu.edu 6767
 LBONE_SERVER     cup.eecs.utk.edu 6767
 
 RESOLUTION_FILE $RESOLUTION_FILE
